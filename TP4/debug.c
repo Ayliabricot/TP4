@@ -7,7 +7,7 @@ Cell* newCell(int value) {
     Cell* p = malloc(sizeof(Cell));
     if (p == NULL)
     {
-        exit(1);
+        exit(2);
     }
     p->value = value;
     p->next = NULL;
