@@ -2,12 +2,12 @@
 
 struct Cell* newCell(int value)
 {
-    struct Cell* p = malloc(sizeof(struct Cell)); // on veut la taille du struct pas de la variable
+    struct Cell* p = malloc(sizeof(struct Cell)); // on met bien la valeur de la taille et non le nom du struct
     if (p == NULL) {
         exit(2);
     }
     p->value = value;
-    p->next = NULL; // on initialise à NULL
+    p->next = NULL; // on initialise à NULL l'élément suivant
     return p;
 }
 
@@ -16,7 +16,7 @@ void sortInsert(struct Cell** head, struct Cell* cell)
     if ((*head) == NULL)
     {
         *head = cell;
-        cell->next = NULL; // on initialise à NULL
+        cell->next = NULL; // on initialise à NULL l'élément suivant
         return;
     }
     if ((*head)->value >= cell->value)
@@ -51,6 +51,6 @@ void printList(struct Cell* list)
     else
     {
         printf("%d ", list->value);
-        printList(list->next); // list->next au lieu de list, évite la boucle "infini"
+        printList(list->next); // on veut afficher la valeur d'après et non toujours la première valeur (ce qui entraîne une boucle infinie)
     }
 }

@@ -14,6 +14,7 @@ int main() {
         power2(*list);
         printList(*list);
         freeList(*list);
+
         free(list);
         list = NULL;
     }
