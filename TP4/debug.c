@@ -17,6 +17,7 @@ Cell* newCell(int value) {
 void sortInsert( Cell** head, Cell* cell) {
     if (*head == NULL) {
         *head = cell;
+        cell->next = NULL;
         return;
     }
     else if ((*head)->value >= cell->value) {
