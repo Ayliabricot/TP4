@@ -1,11 +1,18 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <malloc.h>
 #include "header.h"
 
-struct Cell* newCell(int value)
+
+Cell* newCell(int value)
 {
-    struct Cell* p = malloc(sizeof(struct Cell)); // on met bien la valeur de la taille et non le nom du struct
+    struct Cell* p = malloc(sizeof(Cell)); // on met bien la valeur de la taille et non le nom du struct
     if (p == NULL) {
         exit(2);
     }
+    struct Cell* p = malloc(sizeof(p));
+    p->next = NULL; // on initialise à NULL l'élément suivant
+    if (p == NULL) exit(2);
     p->value = value;
     p->next = NULL; // on initialise à NULL l'élément suivant
     return p;
@@ -26,24 +33,22 @@ void sortInsert(struct Cell** head, struct Cell* cell)
         return;
     }
     sortInsert(&((*head)->next), cell);
-}
-
-void power2(struct Cell* list)
-{
+void power2(Cell* list) {
     if (list == NULL)
         return;
     list->value = list->value * list->value;
     power2(list->next);
-}
-
-void freeList(struct Cell* list)
-{
+void freeList(Cell* list) {
     if (list == NULL)
         return;
-    freeList(list->next);
+    }
+   
+    freeList(list->next); 
+    
     free(list);
-}
-
+ 
+    free(list);
+    freeList(list->next);
 void printList(struct Cell* list)
 {
     if (list == NULL)
