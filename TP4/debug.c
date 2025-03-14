@@ -3,14 +3,23 @@
 #include <malloc.h>
 #include "head.h"
 
+Cell* newCell(int value) {
+    Cell* p = malloc(sizeof(Cell));
+    if (p == NULL)
+    {
+        exit(1);
+    }
+    p->value = value;
+    p->next = NULL;
+    return p;
+}
 
-
-void sortInsert(struct Cell** head, struct Cell* cell) {
+void sortInsert( Cell** head, Cell* cell) {
     if (*head == NULL) {
         *head = cell;
         return;
     }
-    if ((*head)->value >= cell->value) {
+    else if ((*head)->value >= cell->value) {
         cell->next = *head;
         *head = cell;
         return;
@@ -18,23 +27,36 @@ void sortInsert(struct Cell** head, struct Cell* cell) {
     sortInsert(&((*head)->next), cell);
 }
 
-void power2(struct Cell* list) {
-    if (list == NULL) return;
+void power2(Cell* list) {
+    if (list == NULL)
+    {
+        return;
+    }
     list->value = list->value * list->value;
     power2(list->next);
 }
 
-void freeList(struct Cell* list) {
-    if (list == NULL) return;
+void freeList(Cell* list) {
+    if (list == NULL)
+    {
+        return;
+    }
+   
+    freeList(list->next); 
+    list->next = NULL;
     free(list);
-    freeList(list->next);
+ 
 }
 
-void printList(struct Cell* list) {
-    if (list == NULL) printf("\n");
-    else {
-        printf("%d ", list->value);
-        printList(list);
+void printList(Cell* list) {
+    if (list == NULL)
+    {
+        printf("\n");
+        return;
     }
+   
+    printf("%d ", list->value);
+    printList(list);
+    
 }
 
