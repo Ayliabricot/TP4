@@ -2,21 +2,19 @@
 
 int main() {
     srand(time(NULL));
-    Cell** list = malloc(sizeof( Cell));
+    struct Cell** list = malloc(sizeof(struct Cell));
     *list = NULL;
-    int i, j;
+    int i, j, value;
     for (j = 0; j < 10; j++) {
         for (i = 0; i < 10; i++) {
-            sortInsert(list, newCell(rand() % 23));
+            value = rand() % 23;
+            sortInsert(list, newCell(value));
         }
         printList(*list);
         power2(*list);
         printList(*list);
         freeList(*list);
-
         free(list);
         list = NULL;
     }
-
-    return 0;
 }

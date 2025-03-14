@@ -4,16 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-
-typedef struct  {
+struct Cell {
     int value;
     struct Cell* next;
-}Cell;
+};
 
-Cell* newCell(int value);
-void sortInsert( Cell** head,Cell* cell);
-void power2( Cell* list);
-void freeList( Cell* list);
-void printList( Cell* list);
+struct Cell* newCell(int value);
+void sortInsert(struct Cell** head, struct Cell* cell);
+void power2(struct Cell* list);
+void freeList(struct Cell* list);
+void printList(struct Cell* list);
 
 #endif
