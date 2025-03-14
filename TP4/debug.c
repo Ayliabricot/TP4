@@ -4,6 +4,7 @@
 #include "head.h"
 
 
+#include <time.h>
 
 void sortInsert(struct Cell** head, struct Cell* cell) {
     if (*head == NULL) {

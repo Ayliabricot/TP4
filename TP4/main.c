@@ -5,6 +5,7 @@
 #include <malloc.h>
 #include "head.h"
 
+#include <time.h>
 
 int main() {
     struct Cell* list;
