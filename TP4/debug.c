@@ -43,7 +43,7 @@ void freeList(Cell* list) {
     }
    
     freeList(list->next); 
-    list->next = NULL;
+    
     free(list);
  
 }
@@ -52,7 +52,7 @@ void printList(Cell* list) {
     if (list == NULL)
     {
         printf("\n");
-        return;
+        
     }
    
     printf("%d ", list->value);

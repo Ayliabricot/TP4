@@ -8,7 +8,7 @@
 
 
 int main() {
-     Cell* list=NULL;
+     Cell* list;
     int i, j;
     int valeur;
     srand(time(NULL));
