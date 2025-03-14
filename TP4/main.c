@@ -11,7 +11,7 @@
 
 int main() {
     srand(time(NULL));
-    struct Cell** list = malloc(sizeof(struct Cell));
+      Cell** list = malloc(sizeof(  Cell));
     *list = NULL;
     int i, j, value;
     for (j = 0; j < 10; j++) {

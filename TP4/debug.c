@@ -3,10 +3,10 @@
 #include <malloc.h>
 #include "header.h"
 
-    struct Cell* newCell(int value)
+      Cell* newCell(int value)
     {
         
-        struct Cell* p = malloc(sizeof(struct Cell)); // on met bien la valeur de la taille et non le nom du struct
+          Cell* p = malloc(sizeof(  Cell)); // on met bien la valeur de la taille et non le nom du  
         if (p == NULL) {
             exit(2);
         }
@@ -16,7 +16,7 @@
         return p;
     }
 
-    void sortInsert(struct Cell** head, struct Cell* cell)
+    void sortInsert(  Cell** head,   Cell* cell)
     {
         if ((*head) == NULL)
         {
@@ -34,7 +34,7 @@
         sortInsert(&((*head)->next), cell);
     }
 
-void power2(struct Cell* list) {
+void power2(  Cell* list) {
     if (list == NULL) return;
     list->value = list->value * list->value;
     power2(list->next);
@@ -52,7 +52,7 @@ void freeList(Cell* list) {
  
 }
 
-    void printList(struct Cell* list)
+    void printList(  Cell* list)
     {
         if (list == NULL)
             printf("\n");
