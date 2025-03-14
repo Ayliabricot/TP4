@@ -1,3 +1,4 @@
+#include "header.h"
 
 
 #include<stdio.h>
@@ -9,22 +10,20 @@
 #include <time.h>
 
 int main() {
-     Cell* list;
-    int i, j;
-    int valeur;
     srand(time(NULL));
-    for (j = 0; j < 10; ++j) {
-        for (i = 0; i < 10; ++i)
-        {
-            valeur = rand() % 23;
-           
-            Cell * cell = newCell(valeur);
-            sortInsert(&list, cell);
+    struct Cell** list = malloc(sizeof(struct Cell));
+    *list = NULL;
+    int i, j, value;
+    for (j = 0; j < 10; j++) {
+        for (i = 0; i < 10; i++) {
+            value = rand() % 23;
+            sortInsert(list, newCell(value));
         }
-        printList(list);
-        power2(list);
-        printList(list);
-        freeList(list);
+        printList(*list);
+        power2(*list);
+        printList(*list);
+        freeList(*list);
+        free(list);
         list = NULL;
     }
     return 0;

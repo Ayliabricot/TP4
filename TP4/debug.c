@@ -1,38 +1,41 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <malloc.h>
-#include "head.h"
+#include "header.h"
 
-Cell* newCell(int value) {
-    Cell* p = malloc(sizeof(Cell));
-    if (p == NULL)
+    struct Cell* newCell(int value)
     {
-        exit(2);
+        
+        struct Cell* p = malloc(sizeof(struct Cell)); // on met bien la valeur de la taille et non le nom du struct
+        if (p == NULL) {
+            exit(2);
+        }
+        p->value = value;
+       
+        p->next = NULL; // on initialise à NULL l'élément suivant
+        return p;
     }
-    p->value = value;
-    p->next = NULL;
-    return p;
-}
 
-void sortInsert( Cell** head, Cell* cell) {
-    if (*head == NULL) {
-        *head = cell;
-        cell->next = NULL;
-        return;
-    }
-    else if ((*head)->value >= cell->value) {
-        cell->next = *head;
-        *head = cell;
-        return;
-    }
-    sortInsert(&((*head)->next), cell);
-}
-
-void power2(Cell* list) {
-    if (list == NULL)
+    void sortInsert(struct Cell** head, struct Cell* cell)
     {
-        return;
+        if ((*head) == NULL)
+        {
+            *head = cell;
+           
+            cell->next = NULL; // on initialise à NULL l'élément suivant
+            return;
+        }
+        if ((*head)->value >= cell->value)
+        {
+            cell->next = *head;
+            *head = cell;
+            return;
+        }
+        sortInsert(&((*head)->next), cell);
     }
+
+void power2(struct Cell* list) {
+    if (list == NULL) return;
     list->value = list->value * list->value;
     power2(list->next);
 }
@@ -49,15 +52,14 @@ void freeList(Cell* list) {
  
 }
 
-void printList(Cell* list) {
-    if (list == NULL)
+    void printList(struct Cell* list)
     {
-        printf("\n");
-        
+        if (list == NULL)
+            printf("\n");
+        else
+        {
+            printf("%d ", list->value);
+            
+            printList(list->next); // on veut afficher la valeur d'après et non toujours la première valeur (ce qui entraîne une boucle infinie)
+        }
     }
-   
-    printf("%d ", list->value);
-    printList(list);
-    
-}
-
